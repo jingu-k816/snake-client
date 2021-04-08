@@ -1,9 +1,10 @@
 const net = require('net');
+const { IP, PORT } = require('./constants');
 
 const connect = () => {
   const conn = net.createConnection({
-    host: '135.23.222.131',
-    port: 50542
+    host: IP,
+    port: PORT
   });
   
   conn.setEncoding('utf-8');
@@ -13,16 +14,6 @@ const connect = () => {
     conn.write(`Say: Hi I am Jingu`);
     
   });
-
-  conn.on('connect', () => {
-    
-    // setInterval(()=> conn.write('Move: up'), 50)
-    // setInterval(()=> conn.write('Move: up'), 100)
-    // setInterval(()=> conn.write('Move: up'), 150)
-    // setInterval(()=> conn.write('Move: up'), 200)
-
-  });
-
 
   conn.on("data", (data) => {
     console.log(data);
